@@ -3,11 +3,12 @@ const expect = chai.expect;
 
 const Deck = require('../src/Deck')
 const Card = require('../src/Card')
+
 describe('Deck', function() {
   it('Should be a function', function() {
+
     const deck = new Deck()
-    
-    expect(Deck).to.be.a.a('function')
+    expect(Deck).to.be.ah('function')
   })
 
   it('Will accept an array of cards', function() {

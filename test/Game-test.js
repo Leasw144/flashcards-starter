@@ -22,9 +22,16 @@ describe('Game', function() {
   it(`Should keep track of the currentRound`, function() {
     // const round = new Round(deck);
     const game = new Game()
-    expect(game.currentRound).to.equal(0)
+    expect(game.currentRound.turn).to.equal(1)
   })
 
+  it('Start method should create cards', function () {
+    const game = new Game()
+
+    game.start()
+    expect(game.currentDeck[1].id).to.equal(2)
+
+  }) 
   it('Start method should create a deck of cards', function () {
     
     const game = new Game()
@@ -35,6 +42,11 @@ describe('Game', function() {
 
   }) 
 
+  it('', function() {
+    const game = new Game()
+    expect().to.equal()
+
+  }) 
   // it('', function() {
   //   const round = new Round(deck);
   //   const game = new Game()
