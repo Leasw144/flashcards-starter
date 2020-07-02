@@ -52,21 +52,27 @@ describe('Round', function() {
     
     var newDeck = round.takeTurn('derp')
 
-    expect(newDeck).to.deep.equal([1])
+    expect(round.incorrectGuesses).to.deep.equal([14])
   })
 
   it('Feedback is returned regarding whether the guess is correct/incorrect', function() {
     const round = new Round(deck);
+    console.log('this is the current card!', round.currentCard)
 
-    var newDeck = round.takeTurn('sea otter')
 
-    expect(newDeck).to.equal(`Correct!`)
+    var newDeck = round.takeTurn('gallbladder')
+ 
+
+    expect(newDeck).to.equal(`gallbladder is Correct!`)
   })
+
+
 
   it('Should calculate the percentage of correct guesses', function() {
     const round = new Round(deck);
-    const guess = round.takeTurn()
+    const guess = round.takeTurn('object')
+    console.log(round.incorrectGuesses)
     var percentage = round.calculatePercent()
-    expect(calulatePercentage)
+    expect(percentage).to.equal(67)
   })
 })

@@ -16,19 +16,18 @@ class Round {
     this.turn = this.turn += 1
     var turn = new Turn(guess, this.deck.cards[this.turn])
     this.currentCard = this.deck.cards[this.turn]
-    if(turn.guess === turn.card.correctAnswer) {
-      return `Correct!`
+    if (turn.guess === this.currentCard.correctAnswer) {
+      return `${ this.currentCard.correctAnswer } is Correct!`
     } else {
-      this.incorrectGuesses.push(turn.card.id)
-      console.log(`Incorrect!`)
-      return this.incorrectGuesses
+      this.incorrectGuesses.push(this.currentCard.id)
+      return `Incorrect! The answer is ${this.currentCard.correctAnswer}`
     }
   }
 
-  calculatePercent(incorrectGuesses) {
-    console.log('length', this.deck.cards.length)
-    if (this.turn === this.deck.card.length && incorrectGuesses.length < 0) {
-      return incorrectGuesses.length / this.deck.length
+  calculatePercent() {
+    if (this.incorrectGuesses.length >= 1) {
+      console.log(Math.round(100 - ((this.incorrectGuesses.length / this.deck.cards.length) * 100)))
+      return Math.round(100 - ((this.incorrectGuesses.length / this.deck.cards.length) * 100))
     } else {
       return 100
     }
