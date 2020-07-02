@@ -5,15 +5,17 @@ class Round {
     this.deck = deck
     this.turn = 0
     this.incorrectGuesses = []
+    this.currentCard = 0
   }
 
   returnCurrentCard() {
-    return (`this is the returned card `, this.deck.cards[0])
+    return (`this is the returned card `, this.deck.cards[this.currentCard])
   }
 
   takeTurn(guess) {
     this.turn = this.turn += 1
     var turn = new Turn(guess, this.deck.cards[this.turn])
+    this.currentCard = this.deck.cards[this.turn]
     if(turn.guess === turn.card.correctAnswer) {
       return `Correct!`
     } else {

@@ -38,13 +38,13 @@ describe('Round', function() {
     expect(round.turn).to.equal(1)
   })
 
-  it('When takeTurn occurs, the first card is removed from the deck and the second card becomes the new current card', function() {
+  it('When takeTurn occurs, the next card becomes the current card', function() {
     const round = new Round(deck);
 
     var newDeck = round.takeTurn('derp')
     // console.log(`this is newDeck `, newDeck.cards)
     // console.log(`this is card2`, card2)
-    expect(round.deck.cards[0]).to.equal(card2)
+    expect(round.currentCard).to.equal(card2)
   })
 
   it('Incorrect guesses will be recorded in the incorrectGuesses array', function() {
