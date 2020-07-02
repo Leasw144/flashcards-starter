@@ -66,13 +66,18 @@ describe('Round', function() {
     expect(newDeck).to.equal(`gallbladder is Correct!`)
   })
 
-
-
   it('Should calculate the percentage of correct guesses', function() {
     const round = new Round(deck);
     const guess = round.takeTurn('object')
     console.log(round.incorrectGuesses)
     var percentage = round.calculatePercent()
     expect(percentage).to.equal(67)
+  })
+
+  it('Should end round with a message of the percent correct', function() {
+    const round = new Round(deck);
+    const guess = round.takeTurn('object')
+    round.endRound()
+    expect(console.log)
   })
 })
