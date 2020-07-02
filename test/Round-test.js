@@ -68,10 +68,9 @@ describe('Round', function() {
 
   it('Should calculate the percentage of correct guesses', function() {
     const round = new Round(deck);
-    const guess = round.takeTurn('object')
-    console.log(round.incorrectGuesses)
-    var percentage = round.calculatePercent()
-    expect(percentage).to.equal(67)
+    round.takeTurn('object')
+    round.calculatePercent()
+    expect(round.calculatePercent()).to.equal(67)
   })
 
   it('Should end round with a message of the percent correct', function() {

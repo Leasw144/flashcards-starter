@@ -22,7 +22,9 @@ describe('Game', function() {
   it(`Should keep track of the currentRound`, function() {
     // const round = new Round(deck);
     const game = new Game()
-    expect(game.currentRound.turn).to.equal(1)
+    game.start()
+    
+    expect(game.currentRound).to.be.an.instanceOf(Round)
   })
 
   it('Start method should create cards', function () {
