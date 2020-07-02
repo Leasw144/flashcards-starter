@@ -12,11 +12,18 @@ class Turn {
     return this.card
   }
 
-  evaluateGuess(guess) {
-    return guess === this.card.correctAnswer ? true : false
+  evaluateGuess() {
+    var possibleAnswers = this.card.answers
+    console.log(this.card.answers)
+    if (this.guess === this.card.correctAnswer) {
+      return true
+    } else if(!this.guess.includes(possibleAnswers) || this.guess === this.card.correctAnswer) {
+      return false
+    }
   }
 
   giveFeedback(result) {
+
     return result === true ? 'Correct!' : 'Incorrect!'
   }
 }
