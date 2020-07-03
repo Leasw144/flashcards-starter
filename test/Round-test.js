@@ -38,13 +38,13 @@ describe('Round', function() {
     expect(round.turn).to.equal(1)
   })
 
-  it('When takeTurn occurs, the first card is removed from the deck and the second card becomes the new current card', function() {
+  it('When takeTurn occurs, the next card becomes the current card', function() {
     const round = new Round(deck);
 
     var newDeck = round.takeTurn('derp')
     // console.log(`this is newDeck `, newDeck.cards)
     // console.log(`this is card2`, card2)
-    expect(round.deck.cards[0]).to.equal(card2)
+    expect(round.currentCard).to.equal(card2)
   })
 
   it('Incorrect guesses will be recorded in the incorrectGuesses array', function() {
@@ -52,21 +52,32 @@ describe('Round', function() {
     
     var newDeck = round.takeTurn('derp')
 
-    expect(newDeck).to.deep.equal([1])
+    expect(round.incorrectGuesses).to.deep.equal([14])
   })
 
   it('Feedback is returned regarding whether the guess is correct/incorrect', function() {
     const round = new Round(deck);
+    console.log('this is the current card!', round.currentCard)
 
-    var newDeck = round.takeTurn('sea otter')
 
-    expect(newDeck).to.equal(`Correct!`)
+    var newDeck = round.takeTurn('gallbladder')
+ 
+
+    expect(newDeck).to.equal(`gallbladder is Correct!`)
   })
 
   it('Should calculate the percentage of correct guesses', function() {
     const round = new Round(deck);
-    const guess = round.takeTurn()
-    var percentage = round.calculatePercent()
-    expect(calulatePercentage)
+    round.takeTurn('object')
+    round.calculatePercent()
+    expect(round.calculatePercent()).to.equal(67)
+  })
+
+  it('Should end round with a message of the percent correct', function() {
+    const round = new Round(deck);
+    round.takeTurn('object')
+    round.calculatePercent()
+    round.endRound()
+    expect(round.endRound()).to.equal(`** Round over! ** You answered 67% of the questions correctly!`)
   })
 })
