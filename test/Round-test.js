@@ -75,8 +75,9 @@ describe('Round', function() {
 
   it('Should end round with a message of the percent correct', function() {
     const round = new Round(deck);
-    const guess = round.takeTurn('object')
+    round.takeTurn('object')
+    round.calculatePercent()
     round.endRound()
-    expect(console.log)
+    expect(round.endRound()).to.equal(`** Round over! ** You answered 67% of the questions correctly!`)
   })
 })

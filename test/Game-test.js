@@ -8,51 +8,23 @@ const Turn = require('../src/Turn')
 
 describe('Game', function() {
 
-  // let card1, card2, card3, deck
-  // beforeEach(() => {
-  //   card1 = new Card(1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter');
 
-  //   card2 = new Card(14, 'What organ is Khalid missing?', ['spleen', 'appendix', 'gallbladder'], 'gallbladder');
 
-  //   card3 = new Card(12, 'What is Travis\'s favorite stress reliever?', ['listening to music', 'watching Netflix', 'playing with bubble wrap'], 'playing with bubble wrap');
-
-  //   deck = new Deck([card1, card2, card3]);
-  // })
-
-  it(`Should keep track of the currentRound`, function() {
-    // const round = new Round(deck);
+  it(`Should be a function`, function() {
     const game = new Game()
-    game.start()
-    
-    expect(game.currentRound).to.be.an.instanceOf(Round)
+
+    expect(Game).to.be.a('function')
   })
 
-  it('Start method should create cards', function () {
+  it('Should be an instance of Game', function () {
     const game = new Game()
 
-    game.start()
-    expect(game.currentDeck[1].id).to.equal(2)
-
+    expect(game).to.be.an.instanceOf(Game)
   }) 
-  it('Start method should create a deck of cards', function () {
-    
+
+  it('CurrentRound is set to null', function () {
     const game = new Game()
-    var firstCard = game.start()
 
-    var card = game.start()
-    expect(game.currentDeck[0].id).to.equal(1)
-
+    expect(game.currentRound).to.be.equal(null)
   }) 
-
-  it('', function() {
-    const game = new Game()
-    expect().to.equal()
-
-  }) 
-  // it('', function() {
-  //   const round = new Round(deck);
-  //   const game = new Game()
-  //   expect().to.equal()
-
-  // }) 
 })

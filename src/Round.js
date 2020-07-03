@@ -28,7 +28,6 @@ class Round {
   calculatePercent() {
     var result;
     if (this.incorrectGuesses.length >= 1) {
-      console.log(Math.round(100 - ((this.incorrectGuesses.length / this.deck.cards.length) * 100)))
       result = Math.round(100 - ((this.incorrectGuesses.length / this.deck.cards.length) * 100))
       this.percentageCorrect = result
       return result
