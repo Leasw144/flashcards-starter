@@ -5,24 +5,27 @@ class Round {
     this.deck = deck
     this.turn = 0
     this.incorrectGuesses = []
-    this.currentCard = 0
     this.percentageCorrect = null
   }
 
   returnCurrentCard() {
-    return (`this is the returned card `, this.deck.cards[this.currentCard])
+    return this.deck.cards[this.turn]
   }
 
   takeTurn(guess) {
-    this.turn = this.turn += 1
-    var turn = new Turn(guess, this.deck.cards[this.turn])
-    this.currentCard = this.deck.cards[this.turn]
-    if (turn.guess === this.currentCard.correctAnswer) {
-      return `${ this.currentCard.correctAnswer } is Correct!`
+    var card = this.deck.cards[this.turn]
+    var turn = new Turn(guess, card)
+    var statement
+
+    if (turn.guess === card.correctAnswer) {
+      statement = `${ card.correctAnswer } is Correct!`
     } else {
-      this.incorrectGuesses.push(this.currentCard.id)
-      return `Incorrect! The answer is ${this.currentCard.correctAnswer}`
+      this.incorrectGuesses.push(card.id)
+      statement = `Incorrect! The answer is ${card.correctAnswer}`
     }
+
+    this.turn++
+    return statement
   }
 
   calculatePercent() {
@@ -39,7 +42,7 @@ class Round {
   }
 
   endRound() {
-    console.log(`** Round over! ** You answered ${this.percentageCorrect}% of the questions correctly!`)
+    console.log(`** Round over! ** You answered ${this.calculatePercent()}% of the questions correctly!`)
     return process.exit()
   }
 
